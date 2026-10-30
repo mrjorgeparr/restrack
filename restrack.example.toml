@@ -1,0 +1,40 @@
+# restrack configuration (TOML). Every key is optional.
+
+[monitor]
+interval = 1.0          # seconds between samples
+history = 300           # samples kept in memory for the live graphs
+processes = true        # collect the per-process table
+connections_every = 3   # refresh TCP/UDP table every N samples (0 = off)
+sensors_every = 5       # refresh temperatures/battery every N samples (0 = off)
+gpu = true              # NVIDIA metrics if nvidia-ml-py is installed
+
+[storage]               # long-term metrics log (SQLite) behind the History tab
+enabled = true
+path = ""               # "" = <data dir>/metrics.db
+every = 5               # persist every Nth sample (with interval=1 -> one row per 5 s)
+retention_days = 30     # 0 = keep forever
+top_processes = 10      # top-N processes by CPU stored with each row
+
+[logging]               # text log: start/stop, alerts, errors
+level = "INFO"
+file = ""               # "" = <data dir>/restrack.log ; "-" = console only
+max_bytes = 5000000
+backups = 3
+
+[alerts]                # written to the log + the events table; 0 disables a rule
+enabled = true
+sustain = 30            # seconds a condition must hold before it fires
+cooldown = 300          # seconds before the same alert can fire again
+cpu_percent = 90
+memory_percent = 90
+swap_percent = 80
+disk_busy_percent = 95
+disk_free_percent = 10
+temperature_c = 90
+process_cpu_percent = 0
+
+[web]
+host = "127.0.0.1"      # keep on localhost unless you know who can reach it
+port = 8765
+open_browser = false
+allow_control = false   # enable End / Suspend / Resume process in the UI
