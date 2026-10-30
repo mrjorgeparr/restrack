@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resource Monitor</title>
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="window">
+  <div class="titlebar">
+    <svg class="appicon" viewBox="0 0 16 16" aria-hidden="true"><rect x="1" y="2" width="14" height="11" rx="1" fill="#1d1d1d" stroke="#5a8fd0"/><polyline points="2.5,10 5,7 7,9 9.5,4.5 12,8 13.5,6" fill="none" stroke="#3ce03c" stroke-width="1.3"/></svg>
+    <span>Resource Monitor</span>
+    <span class="title-host" id="titleHost"></span>
+  </div>
+  <div class="menubar" id="menubar">
+    <div class="menu" data-menu="file"><u>F</u>ile
+      <div class="dropdown"><button data-act="export-live">Save live snapshot (JSON)</button></div>
+    </div>
+    <div class="menu" data-menu="monitor"><u>M</u>onitor
+      <div class="dropdown">
+        <button data-act="stop">Stop Monitoring</button>
+        <button data-act="start">Start Monitoring</button>
+      </div>
+    </div>
+    <div class="menu" data-menu="help"><u>H</u>elp
+      <div class="dropdown"><button data-act="about">About restrack</button></div>
+    </div>
+  </div>
+  <div class="tabs" id="tabs" role="tablist">
+    <button data-tab="overview" class="active">Overview</button>
+    <button data-tab="cpu">CPU</button>
+    <button data-tab="memory">Memory</button>
+    <button data-tab="disk">Disk</button>
+    <button data-tab="network">Network</button>
+    <button data-tab="history">History</button>
+  </div>
+  <div class="main" id="main">
+    <div class="content" id="content"></div>
+    <div class="views" id="views">
+      <div class="views-head"><span>Views</span><button id="viewsToggle" title="Hide graphs">&#9654;</button></div>
+      <div class="graphs" id="graphs"></div>
+    </div>
+  </div>
+  <div class="statusbar" id="statusbar">
+    <span id="stConn" class="conn">Connecting…</span>
+    <span id="stHost"></span>
+    <span id="stUptime"></span>
+    <span id="stProcs"></span>
+    <span id="stStore"></span>
+  </div>
+</div>
+<div id="ctxmenu" class="ctxmenu" hidden></div>
+<div id="modal" class="modal" hidden><div class="dialog"><div class="dialog-title"><span id="modalTitle"></span><button id="modalClose">&#x2715;</button></div><div class="dialog-body" id="modalBody"></div></div></div>
+<div id="tooltip" class="tooltip" hidden></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+site_name: restrack
+site_description: Real-time machine resource tracking with psutil, a Resource Monitor-style web UI, history and alerts.
+site_author: mrjorgeparr
+site_url: https://mrjorgeparr.github.io/restrack/
+repo_url: https://github.com/mrjorgeparr/restrack
+repo_name: mrjorgeparr/restrack
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+    - search.highlight
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue grey
+      toggle: { icon: material/weather-night, name: Dark mode }
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue grey
+      toggle: { icon: material/weather-sunny, name: Light mode }
+
+nav:
+  - Home: index.md
+  - Getting started: getting-started.md
+  - Guides:
+      - Command line: cli.md
+      - Python API: python-api.md
+      - Web UI: web-ui.md
+      - Configuration: configuration.md
+      - Storage & alerts: storage-and-alerts.md
+      - Profiling your code: profiling.md
+      - Data & precision: dataframes.md
+  - Reference:
+      - Metrics: metrics.md
+      - HTTP API: http-api.md
+      - Platform notes: platform-notes.md
+  - Development: development.md
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc: { permalink: true }
+  - pymdownx.highlight
+  - pymdownx.superfences
